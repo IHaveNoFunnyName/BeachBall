@@ -14,7 +14,7 @@ for (var decree in Molpy.PapalDecrees) {
 BeachBall.popeGrace = 0;
 
 //Version Information
-BeachBall.version = '5.6.2';
+BeachBall.version = '5.6.4';
 BeachBall.SCBversion = '4.0'; //Last SandCastle Builder version tested
 
 // NOTE: Tons of audio code has been commented.
@@ -1433,8 +1433,8 @@ BeachBall.LoadSettings = function() {
 		
 		// Do setting conversion here if required
 		if (oldVersion) {
-			// 5.6.2 removed placeholder setting from Knights at index 2
-			if (BeachBall.VerCompare(oldVersion, '5.6.2') < 0) {
+			// 5.6.4 removed placeholder setting from Knights at index 2
+			if (BeachBall.VerCompare(oldVersion, '5.6.4') < 0) {
 				var ka = Number(localStorage['BB.KnightActions.status']);
 				if (ka >= 2) {
 					localStorage['BB.KnightActions.status'] = ka - 1;
