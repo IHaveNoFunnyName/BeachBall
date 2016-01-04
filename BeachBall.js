@@ -872,10 +872,8 @@ BeachBall.RedundaKitty = function() {
 			if (meKnight.status == 1) {
 				Molpy.DragonKnightAttack();
 			} else if (meKnight.status == 2) {
-				Molpy.DragonKnightAttack(1);
-			} else if (meKnight.status == 3) {
 				Molpy.DragonKnightAttack(2);
-			} else if (meKnight.status == 4) {
+			} else if (meKnight.status == 3) {
 				// Hide the Knight at the less second
 				if (BeachBall.RKTimer <= 3) {
 					Molpy.DragonsHide(0);
@@ -1298,7 +1296,7 @@ BeachBall.LoadDefaultSetting = function (option, key) {
 		if (key == 'status') 	{return 0;}
 		if (key == 'maxStatus') {return 4;}
 		if (key == 'setting')	{return 0;}
-		if (key == 'desc')		{return ['Off', 'Attack', 'Strength Potion', 'Breath<br/>(Placeholder)', 'Hide<br/>(Triggers at <= 3mNP)'];}
+		if (key == 'desc')		{return ['Off', 'Attack', 'Breath<br/>(Placeholder)', 'Hide<br/>(Triggers at <= 3mNP)'];}
 	}
 	else if (option == 'ToolFactory') {
 		if (key == 'title')		{return 'Tool Factory';}
