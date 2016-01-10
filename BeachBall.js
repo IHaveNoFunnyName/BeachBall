@@ -579,16 +579,18 @@ BeachBall.CagedAutoClick = function() {
 			Molpy.MakeCagedPuzzle(costSingle);
 		}
 		// Buy Maximum Puzzles, or Singles if Max is less than 10
-		else if (me.status == 2) {
-			if (/*Molpy.PokeBar() >= 11 && Molpy.Level('LogiPuzzle') >= Molpy.PokeBar() * .9  &&*/ tens && Molpy.Has('GlassBlocks', costMulti)) {
-				Molpy.MakeCagedPuzzle(costMulti, tens);
+		else if (me.status == 2 || me.status == 3) {
+			if (tens && Molpy.Has('GlassBlocks', costMulti)) {
+				if (me.status == 3 && Molpy.PokeBar() >= 11 && Molpy.Level('LogiPuzzle') >= Molpy.PokeBar() * .9) {
+					Molpy.MakeCagedPuzzle(costMulti, tens);
+				}
 			}
 			else if (Molpy.Has('GlassBlocks', costSingle)){
 				Molpy.MakeCagedPuzzle(costSingle);
 			}
 		}
 		// Trade Logicats for Bonemeal and solve continuous logicats
-		else if (me.status == 3) {
+		else if (me.status == 4) {
 			if (Molpy.Got('ShadwDrgn') && Molpy.Level('LogiPuzzle') >= 100) {
 				// only shadowstrike at good times
 				if ((Molpy.Level('LogiPuzzle')%100 > 85 && Molpy.PokeBar() > 100) ||
@@ -613,7 +615,7 @@ BeachBall.CagedAutoClick = function() {
 
 	//Caged Logicat Solver is always called, as this ensures both manually purchased and autoclick purchased will be solved
 	//If a Caged Logicat Problem is Available, and the Logicat Solver is Enabled, and it hasn't been solved, Solve the Logicat
-	if (Molpy.PuzzleGens["caged"].active && (me.status == 1 || me.status == 2 || meLC.status == 1) && Molpy.PuzzleGens["caged"].guess[0] == "No Guess") {
+	if (Molpy.PuzzleGens["caged"].active && (me.status == 1 || me.status == 2 || me.status == 3 || meLC.status == 1) && Molpy.PuzzleGens["caged"].guess[0] == "No Guess") {
 		BeachBall.SolveLogic("caged");
 		// If there are more puzzles remaining, set the timeout to 5 seconds (prevents Notify spam/lag).
 		if (Molpy.Got("LogiPuzzle") > 1) {
@@ -1260,9 +1262,9 @@ BeachBall.LoadDefaultSetting = function (option, key) {
 	else if (option == 'CagedAutoClick') {
 		if (key == 'title')		{return 'Caged Logicat AutoClick';}
 		if (key == 'status') 	{return 0;}
-		if (key == 'maxStatus') {return 3;}
+		if (key == 'maxStatus') {return 4;}
 		if (key == 'setting')	{return 0;}
-		if (key == 'desc')		{return ['Off', 'Solve Single', 'Solve Max', 'Get Bonemeal'];}
+		if (key == 'desc')		{return ['Off', 'Solve Single', 'Solve Max', 'Solve Limit', 'Get Bonemeal'];}
 	}
 	else if (option == 'LCSolver') {
 		if (key == 'title')		{return 'Logicat Solver';}
